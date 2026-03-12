@@ -44,7 +44,6 @@
             overflow: hidden;
         }
 
-        /* "Wedding Invitation" font = Dancing Script, nằm trên ảnh đầu top */
         .hero p.main-title {
             font-family: 'Dancing Script', cursive; 
             font-size: clamp(3.5rem, 10vw, 5rem); 
@@ -63,9 +62,9 @@
         }
 
         .hero-img {
-            width: 100%; height: auto; /* Hình đầu top không crop, giữ nguyên tỷ lệ */
-            object-fit: contain; /* Đảm bảo toàn bộ ảnh hiển thị, không bị cắt */
-            border: none; /* Bỏ hết viền trắng */
+            width: 100%; height: auto;
+            object-fit: contain;
+            border: none;
             border-radius: 0;
             display: block;
         }
@@ -94,17 +93,14 @@
         }
         .family-side p { font-family: 'EB Garamond', serif; font-size: 1.2rem; font-style: italic; margin-bottom: 5px; }
 
-        /* Gallery & Pads - Bỏ hết viền trắng */
+        /* Gallery - Bỏ hết viền trắng */
         .gallery-container {
             display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 800px; margin: 0 auto;
         }
 
         .img-wrapper {
-            width: 100%;
-            border: none; /* Bỏ hết viền trắng */
-            border-radius: 0;
-            overflow: hidden;
-            display: flex; justify-content: center;
+            width: 100%; border: none; border-radius: 0;
+            overflow: hidden; display: flex; justify-content: center;
         }
         .img-wrapper img { width: 100%; height: auto; display: block; object-fit: cover; }
 
@@ -114,22 +110,18 @@
         }
         .pad { flex: 1; }
         
-        /* "Yes I do" font Corinthia, 2 row (Yes/I do) */
         .drop-text {
             font-family: 'Corinthia', cursive;
             font-size: clamp(3rem, 9vw, 4.5rem); 
             color: var(--star-yellow);
-            line-height: 1.0;
-            text-align: left;
-            padding-left: 15%;
+            line-height: 1.0; text-align: left; padding-left: 15%;
         }
 
-        /* "We got married" nằm ngay phía trên 2 hình pad cuối */
         .center-text {
             font-family: 'Corinthia', cursive;
             font-size: clamp(3.5rem, 11vw, 5.5rem);
             color: var(--star-yellow);
-            margin: 30px 0 10px 0; /* Giảm margin bottom để gần pad hình hơn */
+            margin: 30px 0 10px 0;
             display: block; width: 100%;
         }
 
@@ -147,10 +139,19 @@
             font-size: 0.9rem;
         }
 
+        /* FOOTER STYLE */
+        .thank-you-msg {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: var(--star-yellow);
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
         @media (max-width: 600px) {
             .pad-container { flex-direction: row; }
             .family-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero-img { width: 100%; height: auto; object-fit: contain; }
         }
     </style>
 </head>
@@ -170,7 +171,6 @@
 
     <section>
         <div class="card">
-            
             <div class="family-grid">
                 <div class="family-side">
                     <h3>NHÀ TRAI</h3>
@@ -187,9 +187,7 @@
             <div style="border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); padding: 30px 0; margin-bottom: 30px;">
                 <h2 class="invite-title" style="font-size: 2rem; color: var(--star-yellow); margin-bottom: 15px;">Trân Trọng Kính Mời</h2>
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem; margin-bottom: 15px;">Bạn cùng gia đình</p>
-                
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-bottom: 15px;">Tới dự Lễ Thành Hôn của chúng tôi</p>
-                
                 <strong style="font-family: 'Meow Script', cursive; font-size: clamp(2rem, 8vw, 2.5rem); color: var(--star-yellow); display: block;">
                     Đặng Ngọc Kiên ❤️ Võ Quỳnh Như
                 </strong>
@@ -208,34 +206,22 @@
             </div>
 
             <div style="margin-top: 25px;">
-                <a href="https://maps.app.goo.gl/x8T6W1YpXQWb2y6M8" target="_blank" class="btn">📍 Chỉ đường (Google Maps)</a>
+                <a href="https://maps.app.goo.gl/g3z2ssGsJxZJAamn7" target="_blank" class="btn">📍 Chỉ đường (Google Maps)</a>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Đám+Cưới+Ngọc+Kiên+và+Quỳnh+Như&dates=20260329T110000Z/20260329T150000Z&location=The+Adora+Center" target="_blank" class="btn">📅 Thêm Vào Lịch</a>
             </div>
         </div>
     </section>
 
     <section class="gallery-container">
-        
-        <div class="img-wrapper">
-            <img src="https://lh3.googleusercontent.com/d/12XY_FaD7POB22Ny-Gif7HD1LZji0mtk5" alt="Gallery 1">
-        </div>
-        
-        <div class="img-wrapper">
-            <img src="https://lh3.googleusercontent.com/d/1V-0hr2LuqoMgmpjK-0EWd2GK5aC3MfvX" alt="Gallery 2">
-        </div>
+        <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/12XY_FaD7POB22Ny-Gif7HD1LZji0mtk5" alt="Gallery 1"></div>
+        <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/1V-0hr2LuqoMgmpjK-0EWd2GK5aC3MfvX" alt="Gallery 2"></div>
 
         <div class="pad-container">
-            <div class="pad">
-                <div class="drop-text">Yes<br>I do</div>
-            </div>
-            <div class="pad img-wrapper">
-                <img src="https://lh3.googleusercontent.com/d/1FmpYkyutDtkUSOSqLK-KgW8Rnlnsl6f6" alt="Pad B">
-            </div>
+            <div class="pad"><div class="drop-text">Yes<br>I do</div></div>
+            <div class="pad img-wrapper"><img src="https://lh3.googleusercontent.com/d/1FmpYkyutDtkUSOSqLK-KgW8Rnlnsl6f6" alt="Pad B"></div>
         </div>
 
-        <div class="img-wrapper">
-            <img src="https://lh3.googleusercontent.com/d/1p7Ac93-nCdF76hXnX4T0shdfXe6LlYB-" alt="Gallery 3">
-        </div>
+        <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/1p7Ac93-nCdF76hXnX4T0shdfXe6LlYB-" alt="Gallery 3"></div>
 
         <p class="center-text">We got married</p>
 
@@ -253,7 +239,6 @@
                 <div class="time-box"><span id="mins">00</span>Phút</div>
                 <div class="time-box"><span id="secs">00</span>Giây</div>
             </div>
-
             <h2 style="font-family: 'Playfair Display SC', serif; font-size: 2.2rem; color: var(--star-yellow); margin-bottom: 20px;">Xác Nhận Tham Dự</h2>
             <div style="position: relative; padding-bottom: 125%; height: 0; overflow: hidden; border-radius: 15px;">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSejSabYV0MrrqvrNWbyCl4CIs1PLhQU-_8-kV5jwIjt8z3kKQ/viewform?embedded=true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">Đang tải…</iframe>
@@ -261,8 +246,12 @@
         </div>
     </section>
 
-    <footer style="padding: 40px; color: #888; font-size: 0.8rem;">
-        <p>Designed with ❤️ by Đặng Ngọc Kiên</p>
+    <footer style="padding: 40px 0;">
+        <div class="thank-you-msg">
+            Cảm ơn bạn đã dành thời gian quý báu để tham dự ngày trọng đại của chúng mình.<br>
+            Sự hiện diện của bạn là món quà vô giá đối với chúng mình.
+        </div>
+        <p style="color: #888; font-size: 0.8rem;">Designed with ❤️ by Đặng Ngọc Kiên</p>
     </footer>
 
     <script>
