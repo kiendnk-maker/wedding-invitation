@@ -24,17 +24,18 @@
             text-align: center;
             overflow-x: hidden;
             line-height: 1.5;
+            /* Chừa border toàn app để lộ background video */
+            padding: 10px;
         }
 
-        /* 1. SỬA LỖI VIDEO: Đảm bảo tràn viền trên mọi nền tảng */
         .video-background {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden;
         }
         .video-background iframe {
             width: 100vw; 
-            height: 56.25vw; /* Tỷ lệ 16:9 chuẩn của Youtube */
+            height: 56.25vw;
             min-height: 100vh; 
-            min-width: 177.77vh; /* 16/9 = 1.7777 */
+            min-width: 177.77vh;
             position: absolute; top: 50%; left: 50%; 
             transform: translate(-50%, -50%);
         }
@@ -63,7 +64,7 @@
         }
 
         .hero-img-container {
-            width: 90%; max-width: 450px;
+            width: 100%; max-width: 450px;
             margin: 20px 0; z-index: 1;
         }
 
@@ -74,7 +75,7 @@
             object-fit: contain;
         }
 
-        section { padding: 40px 15px; max-width: 600px; margin: 0 auto; }
+        section { padding: 40px 5px; max-width: 600px; margin: 0 auto; }
 
         .card {
             background: var(--card-bg); backdrop-filter: blur(10px);
@@ -82,10 +83,9 @@
             margin-bottom: 20px;
         }
 
-        /* 2. SỬA LỖI NHÀ TRAI/NHÀ GÁI: Ép luôn luôn hiển thị 2 cột (trái/phải) */
         .family-grid {
             display: grid; 
-            grid-template-columns: 1fr 1fr; /* Luôn giữ 2 cột */
+            grid-template-columns: 1fr 1fr;
             gap: 10px; 
             margin-bottom: 30px;
         }
@@ -99,7 +99,7 @@
         
         .family-side p {
             font-family: 'EB Garamond', serif;
-            font-size: 1.1rem; /* Giảm font nhẹ để vừa 2 cột trên đt */
+            font-size: 1.1rem;
             font-style: italic;
             margin-bottom: 5px;
         }
@@ -114,15 +114,17 @@
         }
 
         .pad-container {
-            display: flex; gap: 5px; margin: 5px 0;
+            display: flex; gap: 10px; margin: 10px 0; align-items: stretch;
         }
-        .pad { flex: 1; }
+        .pad { flex: 1; display: flex; align-items: center; justify-content: center; }
         
+        /* Yes I do nằm center pad A */
         .drop-text {
             font-family: 'Corinthia', cursive;
-            font-size: clamp(2.5rem, 10vw, 4rem); 
+            font-size: clamp(3rem, 10vw, 4rem); 
             color: var(--star-yellow);
-            line-height: 1.1; text-align: center;
+            line-height: 1; 
+            text-align: center;
         }
 
         .center-text {
@@ -143,15 +145,8 @@
             display: block; width: 100%; background: var(--star-yellow); color: #0f172a;
             padding: 15px; text-decoration: none; border-radius: 12px;
             font-weight: bold; margin: 10px 0; font-size: 1rem;
-            transition: transform 0.2s;
         }
 
-        .thank-you-msg {
-            font-family: 'Dancing Script', cursive; font-size: 1.3rem;
-            color: var(--star-yellow); padding: 0 15px; margin-bottom: 20px;
-        }
-
-        /* Responsive tinh chỉnh cực nhỏ gọn cho điện thoại (iPhone SE, Galaxy mỏng) */
         @media (max-width: 400px) {
             .family-side p { font-size: 0.95rem; }
             .family-side h3 { font-size: 0.95rem; }
@@ -161,7 +156,7 @@
 <body>
 
     <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0&playsinline=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0&playsinline=1&start=60" frameborder="0" allow="autoplay; fullscreen"></iframe>
     </div>
     <div class="overlay"></div>
 
@@ -193,10 +188,10 @@
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-top: 10px;">Bạn cùng gia đình</p>
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem;">Tới dự Lễ Thành Hôn của chúng tôi</p>
                 
-                <strong style="font-family: 'Meow Script', cursive; font-size: clamp(2rem, 9vw, 2.5rem); color: var(--star-yellow); display: block; margin-top: 10px; line-height: 1.4;">
-                    <span style="display: inline-block;">Đặng Ngọc Kiên</span> 
-                    <span style="display: inline-block; margin: 0 5px;">❤️</span> 
-                    <span style="display: inline-block;">Võ Quỳnh Như</span>
+                <strong style="font-family: 'Meow Script', cursive; font-size: 1.8rem; color: var(--star-yellow); display: block; margin-top: 15px; line-height: 1.6;">
+                    <span style="display: block;">Đặng Ngọc Kiên</span> 
+                    <span style="display: block; font-size: 1.5rem; margin: 5px 0;">❤️</span> 
+                    <span style="display: block;">Võ Quỳnh Như</span>
                 </strong>
             </div>
 
@@ -210,7 +205,7 @@
                 </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/g3z2ssGsJxZJAamn7" target="_blank" class="btn">📍 Chỉ đường (Google Maps)</a>
+            <a href="http://googleusercontent.com/maps.google.com/24" target="_blank" class="btn">📍 Chỉ đường (Google Maps)</a>
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Đám+Cưới+Ngọc+Kiên+và+Quỳnh+Như&dates=20260329T110000Z/20260329T150000Z" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--star-yellow); color: var(--star-yellow);">📅 Thêm Vào Lịch</a>
         </div>
     </section>
@@ -218,10 +213,16 @@
     <div class="gallery-container">
         <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/12XY_FaD7POB22Ny-Gif7HD1LZji0mtk5" alt="1"></div>
         <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/1V-0hr2LuqoMgmpjK-0EWd2GK5aC3MfvX" alt="2"></div>
+        
         <div class="pad-container">
-            <div class="pad"><div class="drop-text">Yes<br>I do</div></div>
-            <div class="pad img-wrapper"><img src="https://lh3.googleusercontent.com/d/1FmpYkyutDtkUSOSqLK-KgW8Rnlnsl6f6" alt="3"></div>
+            <div class="pad">
+                <div class="drop-text">Yes<br>I do</div>
+            </div>
+            <div class="pad img-wrapper">
+                <img src="https://lh3.googleusercontent.com/d/1FmpYkyutDtkUSOSqLK-KgW8Rnlnsl6f6" alt="3">
+            </div>
         </div>
+
         <div class="img-wrapper"><img src="https://lh3.googleusercontent.com/d/1p7Ac93-nCdF76hXnX4T0shdfXe6LlYB-" alt="4"></div>
         <p class="center-text">We got married</p>
         <div class="pad-container">
