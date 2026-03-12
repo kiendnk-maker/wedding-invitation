@@ -201,10 +201,10 @@
 </head>
 <body>
 
-    <!-- Nhạc nền -->
-    <iframe id="music-iframe" src="about:blank"
-        style="position:fixed;left:-9999px;top:0;width:320px;height:180px;border:none;pointer-events:none;"
-        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- Nhạc nền (HTML5 audio - hoạt động trên mọi thiết bị) -->
+    <audio id="music-audio" loop preload="none">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Nút nhạc nổi -->
     <button id="music-btn" title="Phát nhạc nền">🎵</button>
@@ -320,23 +320,31 @@
             }
         }, 1000);
 
-        // ── Nhạc nền ──
+        // ── Nhạc nền (HTML5 Audio) ──
+        var audio = document.getElementById('music-audio');
         var musicPlaying = false;
-        var MUSIC_SRC = 'https://www.youtube.com/embed/GxldQ9eX2wo?autoplay=1&start=63&controls=0&loop=1&playlist=GxldQ9eX2wo&playsinline=1';
 
         document.getElementById('music-btn').addEventListener('click', function() {
             var btn = this;
-            var iframe = document.getElementById('music-iframe');
             if (!musicPlaying) {
                 musicPlaying = true;
                 btn.textContent = '🔊';
                 btn.classList.add('playing');
-                iframe.src = MUSIC_SRC;
+                audio.currentTime = 63; // bắt đầu từ 1:03
+                audio.volume = 0;
+                audio.play();
+                // Fade in volume 0→1 trong 3 giây
+                var vol = 0;
+                var fade = setInterval(function() {
+                    vol = Math.min(vol + 1 / 30, 1);
+                    audio.volume = vol;
+                    if (vol >= 1) clearInterval(fade);
+                }, 100);
             } else {
                 musicPlaying = false;
                 btn.textContent = '🎵';
                 btn.classList.remove('playing');
-                iframe.src = 'about:blank';
+                audio.pause();
             }
         });
 
