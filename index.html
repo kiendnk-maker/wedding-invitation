@@ -46,6 +46,7 @@
             font-size: 5rem;
             color: var(--star-yellow);
             text-shadow: 0 0 20px rgba(245, 228, 146, 0.8);
+            line-height: 1.2;
         }
 
         #countdown { display: flex; gap: 12px; margin-top: 35px; }
@@ -155,7 +156,7 @@
 
     <header class="hero">
         <p>Wedding Invitation</p>
-        <h1>Kiên & Như</h1>
+        <h1>Đặng Ngọc Kiên <br> & <br> Võ Quỳnh Như</h1>
         <div id="countdown">
             <div class="time-box"><span id="days">00</span>Ngày</div>
             <div class="time-box"><span id="hours">00</span>Giờ</div>
@@ -183,7 +184,11 @@
 
             <p style="font-size: 1.2rem; margin-bottom: 20px;">
                 Tới dự Lễ Thành Hôn của <br>
-                <strong style="font-size: 1.5rem; color: var(--star-yellow);">Đặng Ngọc Kiên & Võ Quỳnh Như</strong>
+                <strong style="font-size: 1.5rem; color: var(--star-yellow); display: block; margin-top: 10px; line-height: 1.4;">
+                    Đặng Ngọc Kiên <br> 
+                    & <br> 
+                    Võ Quỳnh Như
+                </strong>
             </p>
 
             <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
@@ -249,7 +254,6 @@
     </footer>
 
     <script>
-        // --- QUẢN LÝ ALBUM DỌC (DANH SÁCH ẢNH MỚI) ---
         const MY_ALBUM = [
             "https://lh3.googleusercontent.com/d/1_srIlTXG8NfOtXlXzI2yB-77TaYGYFWA",
             "https://lh3.googleusercontent.com/d/1cOeYnaefRTc_5ktIER8-rUp8vcak9I5n",
