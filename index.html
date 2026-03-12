@@ -26,17 +26,20 @@
             line-height: 1.5;
         }
 
-        /* Video Background - Tối ưu hiệu năng mobile */
+        /* 1. SỬA LỖI VIDEO: Đảm bảo tràn viền trên mọi nền tảng */
         .video-background {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden;
         }
         .video-background iframe {
-            width: 100vw; height: 100vh; object-fit: cover;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100vw; 
+            height: 56.25vw; /* Tỷ lệ 16:9 chuẩn của Youtube */
+            min-height: 100vh; 
+            min-width: 177.77vh; /* 16/9 = 1.7777 */
+            position: absolute; top: 50%; left: 50%; 
+            transform: translate(-50%, -50%);
         }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay); z-index: -1; }
 
-        /* Hero Section - Chuyên biệt cho màn hình dọc */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
@@ -68,29 +71,39 @@
             width: 100%; height: auto;
             border-radius: 0; border: none;
             display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
         }
 
         section { padding: 40px 15px; max-width: 600px; margin: 0 auto; }
 
         .card {
             background: var(--card-bg); backdrop-filter: blur(10px);
-            padding: 30px 15px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 10px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
         }
 
+        /* 2. SỬA LỖI NHÀ TRAI/NHÀ GÁI: Ép luôn luôn hiển thị 2 cột (trái/phải) */
         .family-grid {
-            display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* Luôn giữ 2 cột */
+            gap: 10px; 
+            margin-bottom: 30px;
         }
         
-        /* Chỉnh font Nhà trai/gái cho Mobile */
         .family-side h3 { 
             font-family: 'Playfair Display SC', serif;
-            color: var(--star-yellow); margin-bottom: 10px; font-size: 1.2rem; 
+            color: var(--star-yellow); margin-bottom: 10px; font-size: 1.1rem; 
             border-bottom: 1px solid var(--star-yellow); padding-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .family-side p {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem; /* Giảm font nhẹ để vừa 2 cột trên đt */
+            font-style: italic;
+            margin-bottom: 5px;
         }
 
-        /* Gallery - Sát lề cho cảm giác ảnh rộng hơn */
         .gallery-container {
             display: flex; flex-direction: column; gap: 10px; width: 100%;
         }
@@ -119,7 +132,6 @@
             margin: 20px 0;
         }
 
-        /* Countdown - Tối ưu kích thước trên iPhone nhỏ */
         #countdown { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
         .time-box {
             background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 10px; min-width: 65px;
@@ -133,18 +145,23 @@
             font-weight: bold; margin: 10px 0; font-size: 1rem;
             transition: transform 0.2s;
         }
-        .btn:active { transform: scale(0.98); }
 
         .thank-you-msg {
             font-family: 'Dancing Script', cursive; font-size: 1.3rem;
             color: var(--star-yellow); padding: 0 15px; margin-bottom: 20px;
+        }
+
+        /* Responsive tinh chỉnh cực nhỏ gọn cho điện thoại (iPhone SE, Galaxy mỏng) */
+        @media (max-width: 400px) {
+            .family-side p { font-size: 0.95rem; }
+            .family-side h3 { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0" frameborder="0"></iframe>
+        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0&playsinline=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
     </div>
     <div class="overlay"></div>
 
@@ -175,8 +192,11 @@
                 <h2 style="font-family: 'Playfair Display SC', serif; font-size: 1.8rem; color: var(--star-yellow);">Trân Trọng Kính Mời</h2>
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-top: 10px;">Bạn cùng gia đình</p>
                 <p style="font-family: 'Dancing Script', cursive; font-size: 1.6rem;">Tới dự Lễ Thành Hôn của chúng tôi</p>
-                <strong style="font-family: 'Meow Script', cursive; font-size: 2.2rem; color: var(--star-yellow); display: block; margin-top: 10px;">
-                    Đặng Ngọc Kiên ❤️ Võ Quỳnh Như
+                
+                <strong style="font-family: 'Meow Script', cursive; font-size: clamp(2rem, 9vw, 2.5rem); color: var(--star-yellow); display: block; margin-top: 10px; line-height: 1.4;">
+                    <span style="display: inline-block;">Đặng Ngọc Kiên</span> 
+                    <span style="display: inline-block; margin: 0 5px;">❤️</span> 
+                    <span style="display: inline-block;">Võ Quỳnh Như</span>
                 </strong>
             </div>
 
