@@ -70,53 +70,32 @@
         }
         .family-side h3 { color: var(--star-yellow); margin-bottom: 10px; font-size: 1.2rem; border-bottom: 1px solid; display: inline-block;}
 
-        /* --- Timeline Style --- */
         .timeline-container {
-            position: relative;
-            padding: 20px 0;
-            margin-top: 30px;
+            position: relative; padding: 20px 0; margin-top: 30px;
         }
         .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--star-yellow);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-            box-shadow: 0 0 10px var(--star-yellow);
+            content: ''; position: absolute; width: 2px; background-color: var(--star-yellow);
+            top: 0; bottom: 0; left: 50%; margin-left: -1px; box-shadow: 0 0 10px var(--star-yellow);
         }
-        .timeline-event {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            text-align: right;
-        }
+        .timeline-event { padding: 10px 40px; position: relative; width: 50%; text-align: right; }
         .timeline-event.left { left: 0; }
         .timeline-event.right { left: 50%; text-align: left; }
         .timeline-event::after {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            right: -7px;
-            background-color: #0f172a;
-            border: 2px solid var(--star-yellow);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 8px var(--star-yellow);
+            content: ''; position: absolute; width: 12px; height: 12px; right: -7px;
+            background-color: #0f172a; border: 2px solid var(--star-yellow); top: 15px; border-radius: 50%; z-index: 1;
         }
         .timeline-event.right::after { left: -7px; }
-        .timeline-content strong {
-            display: block;
-            color: var(--star-yellow);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
+        .timeline-content strong { display: block; color: var(--star-yellow); font-size: 1.3rem; margin-bottom: 5px; }
         .timeline-content p { font-size: 1.1rem; }
+
+        .album-vertical { display: flex; flex-direction: column; gap: 40px; align-items: center; }
+        .album-frame {
+            width: 100%; max-width: 600px; border: 8px solid white; background: white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5); opacity: 0; transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .album-frame.visible { opacity: 1; transform: translateY(0); }
+        .album-frame img { width: 100%; display: block; }
 
         .btn {
             display: inline-block; background: none; color: var(--star-yellow);
@@ -124,20 +103,6 @@
             font-weight: bold; transition: 0.3s; margin: 10px; border: 2px solid var(--star-yellow);
         }
         .btn:hover { background: var(--star-yellow); color: #0f172a; }
-
-        /* Album Vertical Style */
-        .album-vertical { display: flex; flex-direction: column; gap: 40px; align-items: center; }
-        .album-frame {
-            width: 100%; max-width: 600px;
-            border: 8px solid white; background: white;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            opacity: 0; transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .album-frame.visible { opacity: 1; transform: translateY(0); }
-        .album-frame img { width: 100%; display: block; }
-
-        footer { padding: 40px; font-size: 0.8rem; color: #888; }
 
         @media screen and (max-width: 600px) {
             .timeline-container::after { left: 31px; }
@@ -150,7 +115,7 @@
 <body>
 
     <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&start=60&end=240&controls=0&showinfo=0&rel=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&start=60&end=240&controls=0&showinfo=0&rel=0&iv_load_policy=3" frameborder="0"></iframe>
     </div>
     <div class="overlay"></div>
 
@@ -202,7 +167,7 @@
             </div>
 
             <div style="margin-top: 20px;">
-                <a href="https://maps.app.goo.gl/t6NCcZH2Y6w" target="_blank" class="btn">📍 Xem Bản Đồ</a>
+                <a href="https://maps.app.goo.gl/95u3yv3R6m9zQd7M9" target="_blank" class="btn">📍 Xem Bản Đồ</a>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Đám+Cưới+Ngọc+Kiên+và+Quỳnh+Như&dates=20260329T110000Z/20260329T150000Z" target="_blank" class="btn">📅 Thêm Vào Lịch</a>
             </div>
         </div>
@@ -212,24 +177,9 @@
         <div class="card">
             <h2 style="font-family: 'Pinyon Script', cursive; font-size: 2.5rem; color: var(--star-yellow); margin-bottom: 20px;">Chương Trình Lễ Cưới</h2>
             <div class="timeline-container">
-                <div class="timeline-event left">
-                    <div class="timeline-content">
-                        <strong>17:30</strong>
-                        <p>Đón khách</p>
-                    </div>
-                </div>
-                <div class="timeline-event right">
-                    <div class="timeline-content">
-                        <strong>19:00</strong>
-                        <p>Lễ cưới</p>
-                    </div>
-                </div>
-                <div class="timeline-event left">
-                    <div class="timeline-content">
-                        <strong>19:30</strong>
-                        <p>Tiệc cưới</p>
-                    </div>
-                </div>
+                <div class="timeline-event left"><div class="timeline-content"><strong>17:30</strong><p>Đón khách</p></div></div>
+                <div class="timeline-event right"><div class="timeline-content"><strong>19:00</strong><p>Lễ cưới</p></div></div>
+                <div class="timeline-event left"><div class="timeline-content"><strong>19:30</strong><p>Tiệc cưới</p></div></div>
             </div>
         </div>
     </section>
@@ -241,14 +191,15 @@
 
     <section id="rsvp">
         <div class="card">
-            <h2 style="font-family: 'Pinyon Script', cursive; font-size: 3rem; color: var(--star-yellow); margin-bottom: 20px;">Xác Nhận Tham Dự</h2>
-            <p>Sự hiện diện của bạn là món quà vô giá đối với chúng mình!</p>
-            <br>
-            <a href="YOUR_GOOGLE_FORM_URL" class="btn">💌 Gửi Xác Nhận (RSVP)</a>
+            <h2 style="font-family: 'Pinyon Script', cursive; font-size: 2.5rem; color: var(--star-yellow); margin-bottom: 20px;">Xác Nhận Tham Dự</h2>
+            <p style="margin-bottom: 20px;">Sự hiện diện của bạn là món quà vô giá đối với chúng mình!</p>
+            <div style="position: relative; padding-bottom: 125%; height: 0; overflow: hidden; border-radius: 15px;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSejSabYV0MrrqvrNWbyCl4CIs1PLhQU-_8-kV5jwIjt8z3kKQ/viewform?embedded=true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">Đang tải…</iframe>
+            </div>
         </div>
     </section>
 
-    <footer>
+    <footer style="padding: 40px; font-size: 0.8rem; color: #888;">
         <p>Cảm ơn bạn đã dành thời gian quý báu tham dự ngày trọng đại của chúng mình!</p>
         <p style="margin-top: 10px;">Designed with ❤️ by Đặng Ngọc Kiên</p>
     </footer>
@@ -267,7 +218,6 @@
             "https://lh3.googleusercontent.com/d/1GxSa1n_UDAtzQLWOnjyJzXFBSH21JioY",
             "https://lh3.googleusercontent.com/d/1TKKqQhVCCCra3GC18nyK01M3MgYdFxl1"
         ];
-
         const albumContainer = document.getElementById('main-album');
         MY_ALBUM.forEach(url => {
             const frame = document.createElement('div');
@@ -275,11 +225,8 @@
             frame.innerHTML = `<img src="${url}" alt="Wedding Photo">`;
             albumContainer.appendChild(frame);
         });
-
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.album-frame').forEach(img => observer.observe(img));
 
