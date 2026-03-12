@@ -38,24 +38,19 @@
 
         /* ── HERO ── */
         .hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-            padding: 0 0 28px; position: relative;
+            display: flex; flex-direction: column; align-items: center;
+            padding-bottom: 16px; position: relative;
         }
 
         .hero-img-container {
             width: 100%;
-            flex: 1;
             position: relative;
-            min-height: 0;
-            overflow: hidden;
             animation: heroFadeIn 1.4s ease both;
         }
 
         .hero-img {
-            width: 100%; height: 100%;
-            display: block; object-fit: cover;
-            object-position: center top;
+            width: 100%; height: auto;
+            display: block;
         }
 
         /* "Wedding Invitation" overlay trên ảnh */
@@ -79,7 +74,7 @@
             z-index: 2;
             font-weight: 400;
             white-space: nowrap;
-            margin-top: 16px;
+            margin-top: 10px;
             animation: heroSlideUp 1s ease 0.9s both;
         }
 
@@ -178,9 +173,41 @@
             color: var(--star-yellow); padding: 0 15px; margin-bottom: 15px;
             font-weight: 400;
         }
+
+        /* Nút nhạc nổi */
+        #music-btn {
+            position: fixed;
+            bottom: 22px; right: 22px;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1.5px solid var(--star-yellow);
+            color: var(--star-yellow);
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 999;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        #music-btn:hover { background: rgba(245,228,146,0.2); transform: scale(1.08); }
+        #music-btn.playing { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,228,146,0.4); }
+            50%       { box-shadow: 0 0 0 8px rgba(245,228,146,0); }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Nhạc nền -->
+    <iframe id="music-iframe" src="about:blank"
+        style="position:fixed;left:-9999px;top:0;width:320px;height:180px;border:none;pointer-events:none;"
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <!-- Nút nhạc nổi -->
+    <button id="music-btn" title="Phát nhạc nền">🎵</button>
 
     <div class="video-background">
         <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0&playsinline=1&start=60" frameborder="0" allow="autoplay; fullscreen"></iframe>
@@ -292,6 +319,26 @@
                 document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
         }, 1000);
+
+        // ── Nhạc nền ──
+        var musicPlaying = false;
+        var MUSIC_SRC = 'https://www.youtube.com/embed/GxldQ9eX2wo?autoplay=1&start=63&controls=0&loop=1&playlist=GxldQ9eX2wo&playsinline=1';
+
+        document.getElementById('music-btn').addEventListener('click', function() {
+            var btn = this;
+            var iframe = document.getElementById('music-iframe');
+            if (!musicPlaying) {
+                musicPlaying = true;
+                btn.textContent = '🔊';
+                btn.classList.add('playing');
+                iframe.src = MUSIC_SRC;
+            } else {
+                musicPlaying = false;
+                btn.textContent = '🎵';
+                btn.classList.remove('playing');
+                iframe.src = 'about:blank';
+            }
+        });
 
         // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
