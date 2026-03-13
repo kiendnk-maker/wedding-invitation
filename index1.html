@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>婚禮邀請函：鄧玉堅 & 武瓊如</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Meow+Script&family=Corinthia:wght@400;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Dancing+Script:wght@400..700&family=Quicksand:wght@300;500&display=swap');
+
+        :root {
+            --star-yellow: #f5e492;
+            --text-light: #e0f2fe;
+            --overlay: rgba(15, 23, 42, 0.65);
+            --card-bg: rgba(15, 23, 42, 0.85);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #0f172a;
+            color: var(--text-light);
+            text-align: center;
+            overflow-x: hidden;
+            line-height: 1.5;
+            padding: 12px 18px;
+        }
+
+        .video-background {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden;
+        }
+        .video-background iframe {
+            width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay); z-index: -1; }
+
+        /* ── HERO ── */
+        .hero {
+            display: flex; flex-direction: column; align-items: center;
+            padding-bottom: 16px; position: relative;
+        }
+
+        .hero-img-container {
+            width: 100%;
+            position: relative;
+            animation: heroFadeIn 1.4s ease both;
+        }
+
+        .hero-img {
+            width: 100%; height: auto;
+            display: block;
+        }
+
+        .hero p.main-title {
+            position: absolute;
+            top: 44px;
+            left: 0; right: 0;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            color: var(--star-yellow);
+            text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+            z-index: 2;
+            animation: heroSlideDown 1s ease 0.6s both;
+        }
+
+        .hero h1 {
+            font-family: 'Meow Script', cursive;
+            font-size: clamp(1.6rem, 9.5vw, 3rem);
+            color: white;
+            z-index: 2;
+            font-weight: 400;
+            white-space: nowrap;
+            margin-top: 10px;
+            animation: heroSlideUp 1s ease 0.9s both;
+        }
+
+        @keyframes heroFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes heroSlideDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroSlideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Scroll reveal ── */
+        .reveal, .reveal-left, .reveal-right, .reveal-scale {
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal        { opacity: 0; transform: translateY(32px); }
+        .reveal-left   { opacity: 0; transform: translateX(-32px); }
+        .reveal-right  { opacity: 0; transform: translateX(32px); }
+        .reveal-scale  { opacity: 0; transform: scale(0.93); }
+
+        .reveal.is-visible,
+        .reveal-left.is-visible,
+        .reveal-right.is-visible,
+        .reveal-scale.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── Sections / cards ── */
+        section { padding: 30px 5px; max-width: 600px; margin: 0 auto; }
+
+        .card {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            padding: 25px 10px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .family-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 10px; margin-bottom: 25px;
+        }
+
+        .family-side h3 {
+            font-family: 'Playfair Display SC', serif;
+            color: var(--star-yellow); margin-bottom: 8px; font-size: 1rem;
+            border-bottom: 1px solid var(--star-yellow); padding-bottom: 5px;
+            display: inline-block; font-weight: 400;
+        }
+
+        .family-side p {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05rem; font-style: italic; margin-bottom: 3px;
+        }
+
+        .gallery-container { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        .img-wrapper img { width: 100%; height: auto; display: block; border-radius: 0; }
+
+        .pad-container { display: flex; gap: 10px; margin: 10px 0; align-items: stretch; }
+        .pad { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+        .drop-text {
+            font-family: 'Corinthia', cursive;
+            font-size: clamp(2.5rem, 9vw, 3.5rem);
+            color: var(--star-yellow); line-height: 1; text-align: center;
+        }
+
+        .center-text {
+            font-family: 'Corinthia', cursive;
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            color: var(--star-yellow); margin: 15px 0;
+        }
+
+        #countdown { display: flex; gap: 6px; justify-content: center; margin-bottom: 20px; }
+        .time-box {
+            background: rgba(255, 255, 255, 0.05); padding: 6px; border-radius: 8px; min-width: 60px;
+            border: 1px solid rgba(245, 228, 146, 0.3);
+        }
+        .time-box span { display: block; font-size: 1.2rem; color: var(--star-yellow); font-weight: bold; }
+
+        .btn {
+            display: block; width: 100%; background: var(--star-yellow); color: #0f172a;
+            padding: 14px; text-decoration: none; border-radius: 10px;
+            font-weight: bold; margin: 8px 0; font-size: 0.9rem;
+        }
+
+        .thank-you-msg {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            color: var(--star-yellow); padding: 0 15px; margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        /* 音樂浮動按鈕 */
+        #music-btn {
+            position: fixed;
+            bottom: 22px; right: 22px;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1.5px solid var(--star-yellow);
+            color: var(--star-yellow);
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 999;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        #music-btn:hover { background: rgba(245,228,146,0.2); transform: scale(1.08); }
+        #music-btn.playing { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,228,146,0.4); }
+            50%       { box-shadow: 0 0 0 8px rgba(245,228,146,0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景音樂 -->
+    <audio id="music-audio" loop preload="auto" playsinline>
+        <source src="https://raw.githubusercontent.com/kiendnk-maker/wedding-invitation/main/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 音樂控制按鈕 -->
+    <button id="music-btn" title="播放背景音樂">🎵</button>
+
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/t6NCcZH2Y6w?autoplay=1&mute=1&loop=1&playlist=t6NCcZH2Y6w&controls=0&showinfo=0&playsinline=1&start=60" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </div>
+    <div class="overlay"></div>
+
+    <header class="hero">
+        <div class="hero-img-container">
+            <img src="https://lh3.googleusercontent.com/d/12XY_FaD7POB22Ny-Gif7HD1LZji0mtk5" class="hero-img" alt="Hero">
+            <p class="main-title">Wedding Invitation</p>
+        </div>
+        <h1>玉堅 ❤️ 瓊如</h1>
+    </header>
+
+    <section>
+        <div class="card reveal">
+            <div class="family-grid">
+                <div class="family-side reveal-left" style="transition-delay:.1s">
+                    <h3>男方家庭</h3>
+                    <p>父：鄧玉強</p>
+                    <p>母：楊氏秋朋</p>
+                </div>
+                <div class="family-side reveal-right" style="transition-delay:.1s">
+                    <h3>女方家庭</h3>
+                    <p>父：武廷立</p>
+                    <p>母：阮氏清心</p>
+                </div>
+            </div>
+
+            <div style="padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                <h2 style="font-family: 'Playfair Display SC', serif; font-size: 1.6rem; color: var(--star-yellow); font-weight: 400;">誠摯邀請</h2>
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.3rem; margin-top: 5px;">您與您的家人</p>
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.4rem;">蒞臨我們的婚禮</p>
+
+                <strong style="font-family: 'Meow Script', cursive; font-size: 1.8rem; color: var(--star-yellow); display: block; margin-top: 10px; line-height: 1.4; font-weight: 400;">
+                    <span style="display: block;">鄧玉堅</span>
+                    <span style="display: block; font-size: 1.3rem; margin: 3px 0;">❤️</span>
+                    <span style="display: block;">武瓊如</span>
+                </strong>
+            </div>
+
+            <div style="font-family: 'Playfair Display', serif; margin-top: 15px;">
+                <p style="font-size: 1.2rem;">時間：下午 6 時 00 分</p>
+                <p style="font-size: 1.2rem;">2026年3月29日（星期日）</p>
+                <p style="font-size: 1rem;">（農曆丙午年二月十一日）</p>
+                <div style="margin-top: 15px; font-size: 1.2rem;">
+                    <p><strong>地點：</strong>The Adora Center</p>
+                    <p>431 Hoàng Văn Thụ，Tân Sơn Nhất，胡志明市</p>
+                </div>
+            </div>
+
+            <a href="https://maps.google.com/maps?q=The+Adora+Center,+431+Hoang+Van+Thụ,+P.+Tan+Son+Nhat,+TP.+HCM" target="_blank" class="btn">📍 導航（Google Maps）</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=鄧玉堅+武瓊如+婚禮&dates=20260329T110000Z/20260329T150000Z" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--star-yellow); color: var(--star-yellow);">📅 加入行事曆</a>
+        </div>
+    </section>
+
+    <div class="gallery-container">
+        <div class="img-wrapper reveal-scale"><img src="https://lh3.googleusercontent.com/d/1lQdvAU0Y4y9gB1F8_m2tjNXkmuPkx3fD" alt="1"></div>
+        <div class="img-wrapper reveal-scale" style="transition-delay:.1s"><img src="https://lh3.googleusercontent.com/d/1V-0hr2LuqoMgmpjK-0EWd2GK5aC3MfvX" alt="2"></div>
+
+        <div class="pad-container">
+            <div class="pad reveal-left">
+                <div class="drop-text">Yes<br>I do</div>
+            </div>
+            <div class="pad img-wrapper reveal-right">
+                <img src="https://lh3.googleusercontent.com/d/1FmpYkyutDtkUSOSqLK-KgW8Rnlnsl6f6" alt="3">
+            </div>
+        </div>
+
+        <div class="img-wrapper reveal-scale"><img src="https://lh3.googleusercontent.com/d/1p7Ac93-nCdF76hXnX4T0shdfXe6LlYB-" alt="4"></div>
+        <p class="center-text reveal">We got married</p>
+        <div class="pad-container">
+            <div class="pad img-wrapper reveal-left"><img src="https://lh3.googleusercontent.com/d/1cSQp7ETlTUxAG4RdNUHTVGXV5wXvWsDE" alt="5"></div>
+            <div class="pad img-wrapper reveal-right" style="transition-delay:.1s"><img src="https://lh3.googleusercontent.com/d/11M56PSovBLSsbYHPi_J39P4qRLs_mONb" alt="6"></div>
+        </div>
+    </div>
+
+    <section id="rsvp">
+        <div class="card reveal">
+            <div id="countdown">
+                <div class="time-box"><span id="days">00</span>天</div>
+                <div class="time-box"><span id="hours">00</span>時</div>
+                <div class="time-box"><span id="mins">00</span>分</div>
+                <div class="time-box"><span id="secs">00</span>秒</div>
+            </div>
+            <h2 style="font-family: 'Playfair Display SC', serif; font-size: 1.6rem; color: var(--star-yellow); margin-bottom: 15px; font-weight: 400;">出席確認</h2>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSejSabYV0MrrqvrNWbyCl4CIs1PLhQU-_8-kV5jwIjt8z3kKQ/viewform?embedded=true" width="100%" height="600" frameborder="0">載入中…</iframe>
+        </div>
+    </section>
+
+    <footer class="reveal">
+        <div class="thank-you-msg">
+            感謝您撥冗出席我們人生中最重要的時刻。<br>
+            您的蒞臨對我們而言是最珍貴的禮物。
+        </div>
+        <p style="color: #888; font-size: 0.75rem; padding-bottom: 20px;">Designed with ❤️ by 鄧玉堅</p>
+    </footer>
+
+    <script>
+        // Countdown
+        const weddingDate = new Date("March 29, 2026 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        // 背景音樂
+        var audio = document.getElementById('music-audio');
+        var musicPlaying = false;
+
+        function fadeIn() {
+            audio.volume = 0;
+            var t = setInterval(function() {
+                audio.volume = Math.min(audio.volume + 1 / 30, 1);
+                if (audio.volume >= 1) clearInterval(t);
+            }, 100);
+        }
+
+        function setPlaying(v) {
+            musicPlaying = v;
+            var btn = document.getElementById('music-btn');
+            btn.textContent = v ? '🔊' : '🎵';
+            btn.classList.toggle('playing', v);
+        }
+
+        function startAudio() {
+            if (audio.currentTime === 0) audio.currentTime = 63;
+            return audio.play();
+        }
+
+        window.addEventListener('load', function() {
+            startAudio().then(function() {
+                setPlaying(true);
+                fadeIn();
+            }).catch(function() {});
+        });
+
+        document.addEventListener('touchend', function iosHandler(e) {
+            if (!musicPlaying) {
+                startAudio().then(function() { setPlaying(true); fadeIn(); }).catch(function() {});
+            }
+            document.removeEventListener('touchend', iosHandler);
+        });
+
+        document.getElementById('music-btn').addEventListener('touchend', function(e) {
+            e.stopPropagation();
+        });
+
+        document.getElementById('music-btn').addEventListener('click', function() {
+            if (!musicPlaying) {
+                audio.volume = 0;
+                startAudio().then(function() { setPlaying(true); fadeIn(); }).catch(function() {});
+            } else {
+                audio.pause();
+                setPlaying(false);
+            }
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
